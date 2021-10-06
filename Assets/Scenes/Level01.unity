@@ -1074,6 +1074,8 @@ MonoBehaviour:
   VertAxis: Vertical
   FireAxis: Fire1
   MaxSpeed: 0.1
+  jumpForce: 40
+  jumpUp: {x: 0, y: 0, z: 0}
 --- !u!4 &1819260097
 Transform:
   m_ObjectHideFlags: 0
