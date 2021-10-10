@@ -18,14 +18,17 @@ public class PlayerController : MonoBehaviour
     public bool MouseLock = true; //Are we looking at mouse?
     public string HorzAxis = "Horizontal";
     public string VertAxis = "Vertical";
-    public string FireAxis = "Fire1";
+    //public string FireAxis = "Fire1";
     public float MaxSpeed = 5f; //Speed
     private bool isGrounded;
-    public float jumpForce = 10f;
-    public Vector3 jumpUp;
+    public float jumpForce = 0.2f;
+    private Vector3 jumpUp;
+
+    public Animator animator;
+    private bool isFacingLeft = true;
 
 
-    private Rigidbody ThisBody = null; //Var for the ship's rigidbody.
+    private Rigidbody ThisBody; //Var for the ship's rigidbody.
 
     // Awake is called before start
     void Awake()
@@ -38,34 +41,38 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = true; 
     }
-    void FixedUpdate()
+
+    private void Update()
     {
-        float Horz = Input.GetAxis(HorzAxis);
-        float Vert = Input.GetAxis(VertAxis);
-
-        Vector3 MoveLeftRight = new Vector3(Horz, 0.0f, 0.0f);
-        transform.position += MoveLeftRight * MaxSpeed;
-
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             ThisBody.AddForce(jumpUp * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+    }
 
-        /*ThisBody.AddForce(MoveDirection.normalized * MaxSpeed);
+    void FixedUpdate()
+    {
+        float Horz = Input.GetAxis(HorzAxis);
 
-        ThisBody.velocity = new Vector3(Mathf.Clamp(ThisBody.velocity.x, -MaxSpeed, MaxSpeed),
-            Mathf.Clamp(ThisBody.velocity.y, -MaxSpeed, MaxSpeed),
-            Mathf.Clamp(ThisBody.velocity.z, -MaxSpeed, MaxSpeed));
+        Vector3 MoveLeftRight = new Vector3(Horz, 0.0f, 0.0f);
+        transform.position -= MoveLeftRight * MaxSpeed;
 
-        //Look at mouse
-        if (MouseLock)
+        animator.SetFloat("Speed", Mathf.Abs(Horz));
+        
+        if(Horz < 0 && !isFacingLeft)
         {
-            Vector3 MousePosWorld = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f));
-            MousePosWorld = new Vector3(MousePosWorld.x, 0.0f, MousePosWorld.z);
-
-            Vector3 LookDirection = MousePosWorld - transform.position;
-            transform.localRotation = Quaternion.LookRotation(LookDirection.normalized, Vector3.up);
-        }*/
+            Flip();
+        }
+        if(Horz > 0 && isFacingLeft)
+        {
+            Flip();
+        }
     }//end FixedUpdate()
+
+    void Flip()
+    {
+        isFacingLeft = !isFacingLeft;
+        transform.Rotate(0f, 180f, 0f);
+    }
 }
