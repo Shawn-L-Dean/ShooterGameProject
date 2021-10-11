@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1913557304}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5407111280752941289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.87, y: 5.89, z: 0}
+  m_LocalPosition: {x: 40.26623, y: 6.7869883, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5407111280350901900}
@@ -146,7 +146,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &6421235396098262070
 MonoBehaviour:
@@ -161,10 +161,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  speed: 0.1
+  speed: 0.08
+  damageDeal: 40
   animator: {fileID: 1913557304}
   deathEffect: {fileID: 0}
-  target: {fileID: 0}
+  target: {fileID: 7314990290123389194, guid: 993515bb24710194984eb447557b47f8, type: 3}
 --- !u!212 &1913557303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -202,8 +203,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1468593623
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public bool MouseLock = true; //Are we looking at mouse?
     public string HorzAxis = "Horizontal";
     public string VertAxis = "Vertical";
-    //public string FireAxis = "Fire1";
     public float MaxSpeed = 5f; //Speed
     private bool isGrounded;
     public float jumpForce = 0.2f;

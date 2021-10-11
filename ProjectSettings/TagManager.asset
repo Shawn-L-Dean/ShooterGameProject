@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
+  - Background
+  - Enemy
+  - InvWall
+  - Spawner
   layers:
   - Default
   - TransparentFX
@@ -13,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Projectile
-  - 
+  - Background
   - 
   - 
   - 
@@ -41,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3467788335
+    locked: 0
+  - name: Entities
+    uniqueID: 2826373673
     locked: 0

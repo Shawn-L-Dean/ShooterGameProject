@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
-{
+{ 
     public int health = 100;
 
     public GameObject deathEffect;
@@ -20,7 +20,9 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Debug.Log("You are dead");
+        gameObject.SetActive(false);
+     
     }
 }

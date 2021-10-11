@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
 
     public int health = 100;
     public float speed = 5f;
-    private float range;
+    public int damageDeal = 40;
+    //private float range;
     private bool isFacingLeft = true;
     Vector3 moveDir;
 
@@ -48,6 +49,15 @@ public class Enemy : MonoBehaviour
         if (Horz > 0 && isFacingLeft)
         {
             Flip();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform == target.transform)
+        {
+            target.GetComponent<Health>().TakeDamage(damageDeal);
+            Debug.Log("Player Hit");
         }
     }
 

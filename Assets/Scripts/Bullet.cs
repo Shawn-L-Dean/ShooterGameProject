@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
+    //public float speed = 20f;
     public int damage = 50;
     //public Rigidbody thisBody;
     // Start is called before the first frame update
@@ -20,6 +20,6 @@ public class Bullet : MonoBehaviour
         {
             enemy.TakeDamage(damage);
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
