@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - InvWall
   - Spawner
+  - UI
+  - Geometry
   layers:
   - Default
   - TransparentFX
@@ -18,9 +20,9 @@ TagManager:
   - UI
   - Projectile
   - Background
-  - 
-  - 
-  - 
+  - Invwall
+  - Enemy
+  - DeathFX
   - 
   - 
   - 
@@ -51,4 +53,7 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 2826373673
+    locked: 0
+  - name: FX
+    uniqueID: 2041728059
     locked: 0

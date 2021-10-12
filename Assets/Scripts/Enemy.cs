@@ -1,52 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    private Rigidbody rb;
 
     public int health = 100;
     public float speed = 5f;
-    public int damageDeal = 40;
+    public int damageDeal = 30;
+    public int damageOverTime = 1;
+    public int scoreGiven = 20;
     //private float range;
     private bool isFacingLeft = true;
-    Vector3 moveDir;
+
+    Vector3 MoveDir;
+    private Vector3 Jump;
+    public float jumpForce = 0.2f;
 
     public Animator animator;
 
     public GameObject deathEffect;
-    public Transform target;
+    //public Transform target;
+    GameObject player;
 
-    private Rigidbody rb;
-
-    void Awake()
-    {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    void start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        Transform playerPos = player.transform;
+    }
+
     public void FixedUpdate()
     {
-        float Horz = moveDir.x;
-        moveDir = new Vector3(Horz, 0.0f, 0.0f);
+        float horz = MoveDir.x;
+        MoveDir = new Vector3(horz, 0.0f, 0.0f);
 
-        if(target != null)
+        if(player != null)
         {
-            moveDir = target.position - transform.position;
-            moveDir = moveDir.normalized;
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+            MoveDir = player.transform.position - transform.position;
+            MoveDir = MoveDir.normalized;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
         }
-        animator.SetFloat("Speed", Mathf.Abs(Horz));
+        animator.SetFloat("Speed", Mathf.Abs(horz));
 
-        if (Horz < 0 && !isFacingLeft)
+        if (horz < 0 && !isFacingLeft)
         {
             Flip();
         }
-        if (Horz > 0 && isFacingLeft)
+        if (horz > 0 && isFacingLeft)
         {
             Flip();
         }
@@ -54,10 +61,25 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform == target.transform)
+        if (collision.transform == player.transform)
         {
-            target.GetComponent<Health>().TakeDamage(damageDeal);
-            Debug.Log("Player Hit");
+            player.GetComponent<Health>().TakeDamage(damageDeal);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform == player.transform)
+        {
+            player.GetComponent<Health>().TakeDamage(damageOverTime);
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.tag.Equals("Geometry"))
+        {
+            rb.AddForce(Vector3.up * jumpForce);
         }
     }
 
@@ -73,8 +95,9 @@ public class Enemy : MonoBehaviour
     
     void Die()
     {
-        //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject); 
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        GameManager.score += scoreGiven;
     }
 
     void Flip()

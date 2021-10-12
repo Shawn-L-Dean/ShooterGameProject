@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 { 
-    public int health = 100;
+    public int totalHealth;
 
     public GameObject deathEffect;
 
+    public void Awake()
+    {
+        GameManager.health = totalHealth;
+        totalHealth = 150;
+    }
+
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        totalHealth -= damage;
+        GameManager.health = totalHealth;
 
-        if (health <= 0)
+        if (totalHealth <= 0)
         {
             Die();
         }
@@ -20,9 +27,7 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Debug.Log("You are dead");
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-     
     }
 }

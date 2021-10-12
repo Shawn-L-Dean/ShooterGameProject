@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public float MaxSpeed = 5f; //Speed
     private bool isGrounded;
     public float jumpForce = 0.2f;
-    private Vector3 jumpUp;
+    private Vector3 JumpUp;
 
     public Animator animator;
     private bool isFacingLeft = true;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         ThisBody = GetComponent<Rigidbody>(); //Sets the object's rigidbody to a variable.
-        jumpUp = new Vector3(0.0f, jumpForce, 0.0f);
+        JumpUp = new Vector3(0.0f, jumpForce, 0.0f);
     }//end Awake()
 
     private void OnCollisionStay(Collision collision)
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            ThisBody.AddForce(jumpUp * jumpForce, ForceMode.Impulse);
+            ThisBody.AddForce(JumpUp * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
     }

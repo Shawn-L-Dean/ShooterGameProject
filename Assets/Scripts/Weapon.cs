@@ -36,8 +36,6 @@ public class Weapon : MonoBehaviour
     void Shoot()
     {
         //Logic for shooting projectiles.
-
-        //GameObject obj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         GameObject obj = GetPooledBullet();
 
         if (obj != null)
@@ -50,6 +48,7 @@ public class Weapon : MonoBehaviour
 
             direction.x *= -1;
             obj.transform.position = firePoint.position;
+            //obj.transform.rotation = Quaternion.LookRotation(direction);
 
             Rigidbody rb = obj.GetComponent<Rigidbody>();
 
