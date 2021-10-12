@@ -1,3 +1,13 @@
+/*
+ * Created By: Shawn Dean
+ * Date Created: October 10, 2021
+ * 
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 11, 2021
+ * 
+ * Description: Overall manager for UI and gameflow
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +17,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    //Text objects to manage
     public static GameManager Manager = null;
 
     public TMP_Text ScoreText;
@@ -34,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //Initalize variables upon restart.
         Manager = this;
         health = 150;
         score = 0;
@@ -70,7 +82,7 @@ public class GameManager : MonoBehaviour
             HealthText.text = healthPrefix + health.ToString();
             if(health <= 0)
             {
-                StartCoroutine(GameOver());
+                StartCoroutine(GameOver()); //Game is over
             }
         }
         if(TimerText != null)
@@ -79,7 +91,7 @@ public class GameManager : MonoBehaviour
             TimerText.text = timerPrefix + Mathf.Round(time);
             if(time <= 0)
             {
-                StartCoroutine(GameOver());
+                StartCoroutine(GameOver()); //Game is over
             }
         }
     }

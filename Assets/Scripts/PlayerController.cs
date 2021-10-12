@@ -1,11 +1,11 @@
 /*
  * Created By: Shawn Dean
- * Date Created: September 13, 2021
+ * Date Created: October 4, 2021
  * 
- * Last Edited By: 
- * Last Updated: September 15, 2021
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 7, 2021
  * 
- * Description: Player control movements
+ * Description: Player controls and movements
  */
 
 using System.Collections;
@@ -14,10 +14,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public bool MouseLock = true; //Are we looking at mouse?
     public string HorzAxis = "Horizontal";
-    public string VertAxis = "Vertical";
     public float MaxSpeed = 5f; //Speed
     private bool isGrounded;
     public float jumpForce = 0.2f;
@@ -27,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool isFacingLeft = true;
 
 
-    private Rigidbody ThisBody; //Var for the ship's rigidbody.
+    private Rigidbody ThisBody; //Var for the players's rigidbody.
 
     // Awake is called before start
     void Awake()

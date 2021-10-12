@@ -1,3 +1,13 @@
+/*
+ * Created By: Shawn Dean
+ * Date Created: October 5, 2021
+ * 
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 11, 2021
+ * 
+ * Description: Stats of enemy and movement/behavior
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

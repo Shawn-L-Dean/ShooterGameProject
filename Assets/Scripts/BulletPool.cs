@@ -1,3 +1,13 @@
+/*
+ * Created By: Shawn Dean
+ * Date Created: October 7, 2021
+ * 
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 9, 2021
+ * 
+ * Description: Bullet pooling
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,13 @@
+/*
+ * Created By: Shawn Dean
+ * Date Created: October 5, 2021
+ * 
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 7, 2021
+ * 
+ * Description: Bullet stats and disables/enables entities
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

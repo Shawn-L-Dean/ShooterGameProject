@@ -1,3 +1,13 @@
+/*
+ * Created By: Shawn Dean
+ * Date Created: October 5, 2021
+ * 
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 10, 2021
+ * 
+ * Description: Bullet behavior and position/speed
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

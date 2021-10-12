@@ -1,3 +1,13 @@
+/*
+ * Created By: Shawn Dean
+ * Date Created: October 5, 2021
+ * 
+ * Last Edited By: Shawn Dean
+ * Last Updated: October 4, 2021
+ * 
+ * Description: Spawns enemies
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         Transform playerPos = player.transform;
     }
 
-    void Spawn()
+    void Spawn() //Determine spawn position
     {
         Vector3 SpawnPos = gameObject.transform.position;
         SpawnPos = new Vector3(SpawnPos.x, SpawnPos.y, 0.0f);
